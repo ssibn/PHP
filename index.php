@@ -35,8 +35,9 @@
                         <th><?= $product[0]?></th>
                         <th><?= $product[1]?></th>
                         <th><?= $product[2]?></th>
-                        <th><?= $product[3]?>$</th>
+                        <th><?= $product[3]?> $</th>
                         <th><a href='./vendor/update_form.php?id=<?= $product[0] ?>'>Update</a>
+                        <th><a style="color: red" href='./vendor/delete.php?id=<?= $product[0] ?>'>Delete</a>
                         </th>
 
                     </tr>

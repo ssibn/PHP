@@ -4,7 +4,7 @@ require_once '../config/connect.php';
     $product_id = $_GET['id'];
     $product = mysqli_query($connect, "SELECT * FROM `products` WHERE `id` = '$product_id'"); 
     $product = mysqli_fetch_assoc($product);
-    print_r($product);
+    // print_r($product);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +16,8 @@ require_once '../config/connect.php';
 </head>
 <body>
     <h3>Update product</h3>
-        <input type="hiden" name="id" value="<?= $product['id'] ?>"><br>
+    <form action="./update.php" method="post">
+        <input type="hidden" name="id" value="<?= $product['id'] ?>">
         Name: <br>
         <input type="text" name="name" value="<?= $product['product_name'] ?>"><br>
         Text: <br>
