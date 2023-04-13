@@ -58,6 +58,11 @@
         <button type="submit">Send</button>
 
     </form>
+    <br>
+    <a href='./oop.php'>OOP</a>
+    <br>
+    <a href='./oop2.php'>OOP2</a>
+
 </body>
 
 </html>
