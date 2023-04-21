@@ -59,36 +59,59 @@
     ?>
     <div>---------------------------</div>
     <?php
-    class HHTMLTables extends Tables{
+    class HTMLTables extends Tables{
         public $cellpading = '2';
         public $bgcolor;
 
         function __construct($headers, $bg='FFFFFF'){
-            Tables::Tables($headers);
+            Tables::__construct($headers);
             $this->bgcolor = $bg;
         }
-        function output(){
-            echo "<table cellpading='" . $this->cellpading . "'><tr></tr>";
-            foreach($this->headers as $header) echo "<td bgcolor='" . $this->bgcolor . "'>" . $header;
 
-            foreach($this->data as $y){
+        function __destruct(){
+            echo "dead";
+        }
+        function setPadding($padding){
+            $this->cellpadding = $padding;
+        }
+        function output(){
+            echo "<table cellpading='" . $this->cellpading . "'><tr>";
+            foreach($this->headers as $header) 
+                echo "<th bgcolor='" . $this->bgcolor . "'>" . $header;
+            foreach($this->data as $y)
+            {
                 echo "<tr>";
-                foreach($y as $x) echo "$x ";
-                echo "<br>";
+                foreach($y as $x)
+                    echo "<td bgcolor='" . $this->bgcolor . "'>$x";
             }
             echo "</table>";
         }
     }
-
-    $test = new HTMLTables(array('a', 'b', 'c', 'e', 'x'));
     
-    $test->setpading(7);
-
+    $test = new HTMLTables(array('a', 'b', 'c', 'e', 'x'), '#00FFFF');
+    $test->setPadding(7);
     $test->addRow(array('a' => 1, 'b' => 4, 'c' => 6, 'e' => 7, 'x' => 9));
     $test->addRow(array('a' => 1, 'b' => 2, 'c' => 5, 'e' => 8, 'x' => 11));
     $test->addRow(array('a' => 1, 'b' => 4, 'c' => 6, 'e' => 7, 'x' => 9));
     $test->addRow(array('a' => 1, 'b' => 4, 'c' => 6, 'x' => 9));
     $test->output();
+    $test2 = clone $test;
+    unset($test);
+    $test2->output();
+
+
+    interface MyInterface{
+        public function Method();
+        public function MethodTwo();
+    }
+    class Myclass implements MyInterface{
+        public function Method(){
+            //
+        }
+        public function MethodTwo(){
+            //
+        }
+    }
     ?>
 
     <br>

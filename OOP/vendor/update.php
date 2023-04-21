@@ -7,5 +7,6 @@
     $price = $_POST['price'];
 
     mysqli_query($connect, "UPDATE `products` SET `product_name` = '$name', `product_text` = '$text', `product_price` = '$price' WHERE `products` . `id` = '$id' ");
-    header('Location: /GitHub/lessons/');
+    header('Location: /GitHub/OOP/lessons/');
+
     
