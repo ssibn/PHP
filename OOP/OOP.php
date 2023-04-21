@@ -43,7 +43,7 @@
         $obj -> FirmName();
         $obj -> FirmRename('FenncOpenGroup');
         $obj -> FirmName();
-        echo Firm::NAME
+        echo Firm::NAME;
 
 
     ?>
