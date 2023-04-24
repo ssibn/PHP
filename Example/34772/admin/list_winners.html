@@ -1,0 +1,117 @@
+<html>
+<head>
+<title>phpScratchAndWin - List Winners</title>
+<link rel="stylesheet" type="text/css" href="../Themes/Salad/Style.css">
+</head>
+<body bgcolor="#ffffff" link="#008200" alink="#ff0000" vlink="#008200" text="#000000">
+<p>{header}</p>
+<p align="center">
+<!-- BEGIN Record ticketSearch --></p>
+<div align="center">
+  <form method="post" action="{Action}" name="ticketSearch">
+    <font class="SaladFormHeaderFont">Search Winning Tickets</font>
+    <table cellpadding="3" cellspacing="0" class="SaladFormTABLE">
+      <!-- BEGIN Error -->
+      <tr>
+        <td colspan="2" class="SaladDataTD">{Error}</td>
+      </tr>
+      <!-- END Error -->
+      <tr>
+        <td class="SaladFieldCaptionTD">Email Address&nbsp;</td>
+        <td class="SaladDataTD"><input name="s_Email_Address" value="{s_Email_Address}" maxlength="125" size="50" class="SaladInput">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="2" align="right" class="SaladFooterTD">
+          <!-- BEGIN Button DoSearch --><input name="DoSearch" type="submit" value="Search" class="SaladButton"><!-- END Button DoSearch -->&nbsp;</td>
+      </tr>
+    </table>
+  </form>
+</div>
+<p align="center"><!-- END Record ticketSearch --></p>
+<p align="center">
+<!-- BEGIN Grid ticket --><font class="SaladFormHeaderFont">List of Winning
+Tickets</font></p>
+<div align="center">
+  <table cellpadding="3" cellspacing="0" class="SaladFormTABLE" align="center">
+    <tr>
+      <td nowrap class="SaladColumnTD">
+        <p align="center">
+        <!-- BEGIN Sorter Sorter_Ticket_ID --><a class="SaladSorterLink" href="{Sort_URL}">ID</a>
+        <!-- BEGIN Asc_On --><img src="../Themes/Salad/AscOn.gif" border="0"><!-- END Asc_On -->
+        <!-- BEGIN Desc_On --><img src="../Themes/Salad/DescOn.gif" border="0"><!-- END Desc_On --><!-- END Sorter Sorter_Ticket_ID -->&nbsp;</p>
+      </td>
+      <td nowrap class="SaladColumnTD">
+        <p align="center">
+        <!-- BEGIN Sorter Sorter_Email_Address --><a class="SaladSorterLink" href="{Sort_URL}">Email
+        Address</a>
+        <!-- BEGIN Asc_On --><img src="../Themes/Salad/AscOn.gif" border="0"><!-- END Asc_On -->
+        <!-- BEGIN Desc_On --><img src="../Themes/Salad/DescOn.gif" border="0"><!-- END Desc_On --><!-- END Sorter Sorter_Email_Address -->&nbsp;</p>
+      </td>
+      <td nowrap class="SaladColumnTD">
+        <p align="center">
+        <!-- BEGIN Sorter Sorter_DrawDate --><a class="SaladSorterLink" href="{Sort_URL}">Draw
+        Date</a>
+        <!-- BEGIN Asc_On --><img src="../Themes/Salad/AscOn.gif" border="0"><!-- END Asc_On -->
+        <!-- BEGIN Desc_On --><img src="../Themes/Salad/DescOn.gif" border="0"><!-- END Desc_On --><!-- END Sorter Sorter_DrawDate -->&nbsp;</p>
+      </td>
+      <td nowrap class="SaladColumnTD">
+        <p align="center">
+        <!-- BEGIN Sorter Sorter_Number_1 --><a class="SaladSorterLink" href="{Sort_URL}">#1</a>
+        <!-- BEGIN Asc_On --><img src="../Themes/Salad/AscOn.gif" border="0"><!-- END Asc_On -->
+        <!-- BEGIN Desc_On --><img src="../Themes/Salad/DescOn.gif" border="0"><!-- END Desc_On --><!-- END Sorter Sorter_Number_1 -->&nbsp;</p>
+      </td>
+      <td nowrap class="SaladColumnTD">
+        <p align="center">
+        <!-- BEGIN Sorter Sorter_Number_2 --><a class="SaladSorterLink" href="{Sort_URL}">#2</a>
+        <!-- BEGIN Asc_On --><img src="../Themes/Salad/AscOn.gif" border="0"><!-- END Asc_On -->
+        <!-- BEGIN Desc_On --><img src="../Themes/Salad/DescOn.gif" border="0"><!-- END Desc_On --><!-- END Sorter Sorter_Number_2 -->&nbsp;</p>
+      </td>
+      <td nowrap class="SaladColumnTD">
+        <p align="center">
+        <!-- BEGIN Sorter Sorter_Played --><a class="SaladSorterLink" href="{Sort_URL}">Played</a>
+        <!-- BEGIN Asc_On --><img src="../Themes/Salad/AscOn.gif" border="0"><!-- END Asc_On -->
+        <!-- BEGIN Desc_On --><img src="../Themes/Salad/DescOn.gif" border="0"><!-- END Desc_On --><!-- END Sorter Sorter_Played -->&nbsp;</p>
+      </td>
+    </tr>
+    <!-- BEGIN Row -->
+    <tr>
+      <td class="SaladDataTD">
+        <p align="center"><a class="SaladDataLink" href="{Ticket_ID_Src}">{Ticket_ID}</a>&nbsp;</p>
+      </td>
+      <td class="SaladDataTD">
+        <p align="center">{Email_Address}&nbsp;</p>
+      </td>
+      <td class="SaladDataTD">
+        <p align="center">{DrawDate}&nbsp;</p>
+      </td>
+      <td class="SaladDataTD">
+        <p align="center">{Number_1}&nbsp;</p>
+      </td>
+      <td class="SaladDataTD">
+        <p align="center">{Number_2}&nbsp;</p>
+      </td>
+      <td class="SaladDataTD">
+        <p align="center">{Played}&nbsp;</p>
+      </td>
+    </tr>
+    <!-- END Row -->
+    <!-- BEGIN NoRecords -->
+    <tr>
+      <td colspan="6" class="SaladDataTD">No records&nbsp;</td>
+    </tr>
+    <!-- END NoRecords -->
+    <tr>
+      <td colspan="6" class="SaladFooterTD">
+        <!-- BEGIN Navigator Navigator -->
+        <!-- BEGIN First_On --><a class="SaladNavigatorLink" href="{First_URL}">|&lt;</a><!-- END First_On -->
+        <!-- BEGIN Prev_On --><a class="SaladNavigatorLink" href="{Prev_URL}">&lt;&lt;</a><!-- END Prev_On -->&nbsp;{Page_Number}
+        of {Total_Pages}&nbsp;
+        <!-- BEGIN Next_On --><a class="SaladNavigatorLink" href="{Next_URL}">&gt;&gt;</a><!-- END Next_On -->
+        <!-- BEGIN Last_On --><a class="SaladNavigatorLink" href="{Last_URL}">&gt;|</a><!-- END Last_On --><!-- END Navigator Navigator -->&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<p align="center"><!-- END Grid ticket --></p>
+<p>{footer}</p>
+</body>
+</html>

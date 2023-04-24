@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+    body
+{
+    background-color: #b6cbe8;
+    background-image: url('/img/cloud.png');
+    background-attachment: fixed;
+    animation: cloud 10s ease infinite;
+}
+@keyframes cloud
+{
+    from
+    {
+        background-position-x: 0px;
+    }
+    to
+    {
+        background-position-x: 500px;
+    }
+}
+
+
+
+
+
+
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+.addMessage{
+    width:500px;
+    height: 200px;
+}
+.form, .newMessage{
+    background: rgba(234, 45, 43, 50%);
+    padding: 10px;
+}
+.newMessage{
+    width: 520px;
+}
+.post{
+    border: 1px solid black;
+    margin: 10px;
+}
+.topNone{
+    display: none;
+}

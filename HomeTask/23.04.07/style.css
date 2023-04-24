@@ -1,0 +1,145 @@
+body
+{
+    background: #b6cbe8;
+    background-image: url('./cloud.png');
+    background-attachment: fixed;
+    animation: cloud 10s ease infinite;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    gap: 30px;
+}
+.form
+{
+    min-width: 750px;
+    min-height: 500px;
+    background: rgba(84, 164, 68, 0.5);
+}
+h2
+{
+    color: #9c27b0;
+}
+@keyframes cloud 
+{
+    from{background-position-x: 0px;}
+    to{background-position-x: 500px;}
+}
+.form-input
+{
+    margin: 10px 0;
+}
+.form-input-row
+{
+    display: inline-block;
+}
+.form-input textarea
+{
+    width: 100%;
+    background: #fefefe;
+    border: 1px solid #dde5ed;
+    padding: 15px 0;
+    outline: none;
+    color: rgb(35, 57, 255);
+    text-align: center;
+    background: rgb(246 9 9 / 50%);
+    font-size: large;
+}
+.form-input input::placeholder
+{
+    font-weight: 900;
+    font-size: 25px;
+    color: rgba(95, 0, 255, 0.5);
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    z-index: 3;
+    font-weight: 300;
+    font-size: 30px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    opacity: .5;
+  }
+  .inputBox
+  {
+    position: relative;
+    width: 250px;
+  }
+  .inputBox input
+  {
+    width: 100%;
+    background: transparent;
+    color: rgb(35, 57, 255);
+    border: none;
+    outline: none;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    padding: 10px 0 5px;
+  }
+  .inputBox span
+  {
+    position: absolute;
+    left: 0;
+    padding: 10px 0 5px;
+    color: rgba(95, 0, 255, 0.5);
+    text-transform: uppercase;
+    pointer-events: none;
+    letter-spacing: 0.1em;
+    transition: 0.5s;
+  }
+  .inputBox input:valid ~ span, .inputBox input:focus ~ span
+  {
+    color: #fc00fc;
+    transform: translateY(-16px);
+    font-size: 0.65em;
+  }
+  .inputBox i
+  {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: tomato;
+    overflow: hidden;
+  }
+  .inputBox i::before
+  {
+    content: '';
+    position: absolute;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #ff1b69, #ff0, #2196f3, #9c27b0, #ff1b69);
+    animation: animate 2s linear infinite;
+    transition: 0.5s;
+  }
+  .inputBox input:valid ~ i::before, .inputBox input:focus ~ i::before
+  {
+    left: 0;
+  }
+  @keyframes animate 
+  {
+   0%
+   {
+    background-position-x: 0;
+   } 
+   100%
+   {
+    background-position-x: 250px;
+   }
+  }
+  .form-btn input
+  {
+    color: #9c27b0;
+  }
+  .form-btn input:last-child
+  {
+    right: 0;
+  }

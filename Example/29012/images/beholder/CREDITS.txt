@@ -1,0 +1,2 @@
+Beholder was graciously donated to WebChess by Dave Whiteland.
+Please check out his website at http://www.beholder.co.uk

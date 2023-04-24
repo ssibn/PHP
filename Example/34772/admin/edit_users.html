@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>phpScratchAndWin - Edit Users</title>
+<link rel="stylesheet" type="text/css" href="../Themes/Salad/Style.css">
+</head>
+<body bgcolor="#ffffff" link="#008200" alink="#ff0000" vlink="#008200" text="#000000">
+<p>{Header}</p>
+<p align="center">
+<!-- BEGIN Record users --></p>
+<div align="center">
+  <form method="post" action="{Action}" name="users">
+    <font class="SaladFormHeaderFont">Add/Edit Users</font>
+    <table cellpadding="3" cellspacing="0" class="SaladFormTABLE">
+      <!-- BEGIN Error -->
+      <tr>
+        <td colspan="2" class="SaladDataTD">{Error}</td>
+      </tr>
+      <!-- END Error -->
+      <tr>
+        <td class="SaladFieldCaptionTD">Name&nbsp;</td>
+        <td class="SaladDataTD"><input name="Users_Name" value="{Users_Name}" maxlength="16" size="16" class="SaladInput">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="SaladFieldCaptionTD">Password&nbsp;</td>
+        <td class="SaladDataTD"><input name="Users_Password" value="{Users_Password}" maxlength="16" size="16" class="SaladInput">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="SaladFieldCaptionTD">Access&nbsp;</td>
+        <td class="SaladDataTD">
+          <select name="Users_Access">
+            <option value="">Select Value</option>
+            {Users_Access_Options}
+          </select>
+          &nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="2" align="right" class="SaladFooterTD">
+          <!-- BEGIN Button Insert --><input name="Insert" type="submit" value="Add" class="SaladButton"><!-- END Button Insert -->
+          <!-- BEGIN Button Update --><input name="Update" type="submit" value="Submit" class="SaladButton"><!-- END Button Update -->
+          <!-- BEGIN Button Delete --><input name="Delete" type="submit" value="Delete" class="SaladButton"><!-- END Button Delete -->&nbsp;</td>
+      </tr>
+    </table>
+  </form>
+</div>
+<p align="center"><!-- END Record users --></p>
+<p>{Footer}</p>
+</body>
+</html>

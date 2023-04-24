@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>phpScratchAndWin - Login</title>
+<link rel="stylesheet" type="text/css" href="../Themes/Salad/Style.css">
+</head>
+<body bgcolor="#ffffff" link="#008200" alink="#ff0000" vlink="#008200" text="#000000">
+<p>{Header}</p>
+<p align="center">
+<!-- BEGIN Record Login --></p>
+<div align="center">
+  <form method="post" action="{Action}" name="Login">
+    <font class="SaladFormHeaderFont">Login</font>
+    <table cellpadding="3" cellspacing="0" class="SaladFormTABLE">
+      <!-- BEGIN Error -->
+      <tr>
+        <td colspan="2" class="SaladDataTD">{Error}</td>
+      </tr>
+      <!-- END Error -->
+      <tr>
+        <td class="SaladFieldCaptionTD">Login&nbsp;</td>
+        <td class="SaladDataTD"><input name="login" value="{login}" maxlength="100" class="SaladInput">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="SaladFieldCaptionTD">Password&nbsp;</td>
+        <td class="SaladDataTD"><input type="password" name="password" value="{password}" maxlength="100" class="SaladInput">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="2" align="right" class="SaladFooterTD">
+          <!-- BEGIN Button DoLogin --><input name="DoLogin" type="submit" value="Login" class="SaladButton"><!-- END Button DoLogin -->&nbsp;</td>
+      </tr>
+    </table>
+  </form>
+</div>
+<p align="center"><!-- END Record Login --></p>
+<p>{Footer}</p>
+</body>
+</html>

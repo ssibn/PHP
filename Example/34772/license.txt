@@ -1,0 +1,31 @@
+phpScratchandWin is copyrighted (c) 2003 by 'Your PHP Pro'.
+
+Selling the code for this program, or a program derived from phpScratchandWin,
+without prior written consent is expressly forbidden. Similarly, redistributing
+this program, or a program derived from phpScratchandWin, over the Internet,
+CD-ROM or any other medium is expressly forbidden without prior written consent.
+'Your PHP Pro' makes no warranties of any kind, expressed or implied, including
+any warranty of merchantability or fitness for a particular purpose. Your PHP
+Pro shall have no liability to any person or entity with respect to any
+liability, loss or damage, including indirect, special, incidental or
+consequential damages, caused directly or indirectly by the use or performance
+of phpScratchandWin.
+This is NOT a freely distributed script. Distribution, or allowing public access 
+to password protected resources that make phpScratchandWin available to the 
+public is strictly prohibited and violates the license agreement.
+phpScratchandWin is a copyrighted program, using versions beyond the public 
+release without the purchase of a license (or equivalent written permission) 
+violates the above license, and violates fair use.
+
+In short (not limited to), you: 
+MAY:
+- Install phpScratchandWin for one domain per license.
+- Modify phpScratchandWin for your OWN use.
+MAY NOT:
+- Distribute phpScratchandWin in any way, in whole or part.
+- Release a fork of phpScratchandWin based on the contained code.
+
+Reproduction or redistribution of the software not in accordance with the 
+license agreement is expressly prohibited by law, and may result in severe civil 
+and criminal penalties. Anyone violating the aforesaid will be prosecuted to the 
+maximum extent possible.

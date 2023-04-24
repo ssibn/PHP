@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>phpScratchAndWin - List Users</title>
+<link rel="stylesheet" type="text/css" href="../Themes/Salad/Style.css">
+</head>
+<body bgcolor="#ffffff" link="#008200" alink="#ff0000" vlink="#008200" text="#000000">
+<p>{Header}</p>
+<p align="center">
+<!-- BEGIN Record usersSearch --></p>
+<div align="center">
+  <form method="post" action="{Action}" name="usersSearch">
+    <font class="SaladFormHeaderFont">Search Users</font>
+    <table cellpadding="3" cellspacing="0" class="SaladFormTABLE">
+      <!-- BEGIN Error -->
+      <tr>
+        <td colspan="2" class="SaladDataTD">{Error}</td>
+      </tr>
+      <!-- END Error -->
+      <tr>
+        <td class="SaladFieldCaptionTD">Keyword&nbsp;</td>
+        <td class="SaladDataTD"><input name="s_keyword" value="{s_keyword}" maxlength="16" size="16" class="SaladInput">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="2" align="right" class="SaladFooterTD">
+          <!-- BEGIN Button DoSearch --><input name="DoSearch" type="submit" value="Search" class="SaladButton"><!-- END Button DoSearch -->&nbsp;</td>
+      </tr>
+    </table>
+  </form>
+</div>
+<p align="center"><!-- END Record usersSearch --></p>
+<p align="center">
+<!-- BEGIN Grid users --><font class="SaladFormHeaderFont">List of Users</font></p>
+<div align="center">
+  <table cellpadding="3" cellspacing="0" class="SaladFormTABLE" align="center">
+    <tr>
+      <td nowrap class="SaladColumnTD">
+        <p align="center">
+        <!-- BEGIN Sorter Sorter_Users_ID --><a class="SaladSorterLink" href="{Sort_URL}">ID</a>
+        <!-- BEGIN Asc_On --><img src="../Themes/Salad/AscOn.gif" border="0"><!-- END Asc_On -->
+        <!-- BEGIN Desc_On --><img src="../Themes/Salad/DescOn.gif" border="0"><!-- END Desc_On --><!-- END Sorter Sorter_Users_ID -->&nbsp;</p>
+      </td>
+      <td nowrap class="SaladColumnTD">
+        <p align="center">
+        <!-- BEGIN Sorter Sorter_Users_Name --><a class="SaladSorterLink" href="{Sort_URL}">Name</a>
+        <!-- BEGIN Asc_On --><img src="../Themes/Salad/AscOn.gif" border="0"><!-- END Asc_On -->
+        <!-- BEGIN Desc_On --><img src="../Themes/Salad/DescOn.gif" border="0"><!-- END Desc_On --><!-- END Sorter Sorter_Users_Name -->&nbsp;</p>
+      </td>
+      <td nowrap class="SaladColumnTD">
+        <p align="center">
+        <!-- BEGIN Sorter Sorter_Users_Password --><a class="SaladSorterLink" href="{Sort_URL}">Password</a>
+        <!-- BEGIN Asc_On --><img src="../Themes/Salad/AscOn.gif" border="0"><!-- END Asc_On -->
+        <!-- BEGIN Desc_On --><img src="../Themes/Salad/DescOn.gif" border="0"><!-- END Desc_On --><!-- END Sorter Sorter_Users_Password -->&nbsp;</p>
+      </td>
+      <td nowrap class="SaladColumnTD">
+        <p align="center">
+        <!-- BEGIN Sorter Sorter_Users_Access --><a class="SaladSorterLink" href="{Sort_URL}">Access</a>
+        <!-- BEGIN Asc_On --><img src="../Themes/Salad/AscOn.gif" border="0"><!-- END Asc_On -->
+        <!-- BEGIN Desc_On --><img src="../Themes/Salad/DescOn.gif" border="0"><!-- END Desc_On --><!-- END Sorter Sorter_Users_Access -->&nbsp;</p>
+      </td>
+    </tr>
+    <!-- BEGIN Row -->
+    <tr>
+      <td class="SaladDataTD">
+        <p align="center"><a class="SaladDataLink" href="{Users_ID_Src}">{Users_ID}</a>&nbsp;</p>
+      </td>
+      <td class="SaladDataTD">
+        <p align="center">{Users_Name}&nbsp;</p>
+      </td>
+      <td class="SaladDataTD">
+        <p align="center">{Users_Password}&nbsp;</p>
+      </td>
+      <td class="SaladDataTD">
+        <p align="center">{Users_Access}&nbsp;</p>
+      </td>
+    </tr>
+    <!-- END Row -->
+    <!-- BEGIN NoRecords -->
+    <tr>
+      <td colspan="4" class="SaladDataTD">No records&nbsp;</td>
+    </tr>
+    <!-- END NoRecords -->
+    <tr>
+      <td colspan="4" class="SaladFooterTD"><a class="SaladDataLink" href="{users_Insert_Src}">Add
+        New</a>&nbsp;
+        <!-- BEGIN Navigator Navigator -->
+        <!-- BEGIN First_On --><a class="SaladNavigatorLink" href="{First_URL}">|&lt;</a><!-- END First_On -->
+        <!-- BEGIN Prev_On --><a class="SaladNavigatorLink" href="{Prev_URL}">&lt;&lt;</a><!-- END Prev_On -->&nbsp;{Page_Number}
+        of {Total_Pages}&nbsp;
+        <!-- BEGIN Next_On --><a class="SaladNavigatorLink" href="{Next_URL}">&gt;&gt;</a><!-- END Next_On -->
+        <!-- BEGIN Last_On --><a class="SaladNavigatorLink" href="{Last_URL}">&gt;|</a><!-- END Last_On --><!-- END Navigator Navigator -->&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<p align="center"><!-- END Grid users --></p>
+<p>{Footer}</p>
+</body>
+</html>

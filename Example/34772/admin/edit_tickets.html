@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>phpScratchAndWin - Edit Tickets</title>
+<link rel="stylesheet" type="text/css" href="../Themes/Salad/Style.css">
+</head>
+<body bgcolor="#ffffff" link="#008200" alink="#ff0000" vlink="#008200" text="#000000">
+<p>{header}</p>
+<p align="center">
+<!-- BEGIN Record ticket --></p>
+<div align="center">
+  <form method="post" action="{Action}" name="ticket">
+    <font class="SaladFormHeaderFont">Add/Edit Ticket</font>
+    <table cellpadding="3" cellspacing="0" class="SaladFormTABLE">
+      <!-- BEGIN Error -->
+      <tr>
+        <td colspan="2" class="SaladDataTD">{Error}</td>
+      </tr>
+      <!-- END Error -->
+      <tr>
+        <td class="SaladFieldCaptionTD">Email Address&nbsp;</td>
+        <td class="SaladDataTD"><input name="Email_Address" value="{Email_Address}" maxlength="125" size="50" class="SaladInput">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="SaladFieldCaptionTD">Draw Date&nbsp;</td>
+        <td class="SaladDataTD"><input name="DrawDate" value="{DrawDate}" maxlength="10" size="10" class="SaladInput">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="SaladFieldCaptionTD">Number 1&nbsp;</td>
+        <td class="SaladDataTD"><input name="Number_1" value="{Number_1}" maxlength="10" size="10" class="SaladInput">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="SaladFieldCaptionTD">Number 2&nbsp;</td>
+        <td class="SaladDataTD"><input name="Number_2" value="{Number_2}" maxlength="10" size="10" class="SaladInput">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="SaladFieldCaptionTD">Pick 1&nbsp;</td>
+        <td class="SaladDataTD"><input name="Pick_1" value="{Pick_1}" maxlength="10" size="10" class="SaladInput">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="SaladFieldCaptionTD">Pick 2&nbsp;</td>
+        <td class="SaladDataTD"><input name="Pick_2" value="{Pick_2}" maxlength="10" size="10" class="SaladInput">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="SaladFieldCaptionTD">Pick 3&nbsp;</td>
+        <td class="SaladDataTD"><input name="Pick_3" value="{Pick_3}" maxlength="10" size="10" class="SaladInput">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="SaladFieldCaptionTD">Pick 4&nbsp;</td>
+        <td class="SaladDataTD"><input name="Pick_4" value="{Pick_4}" maxlength="10" size="10" class="SaladInput">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="SaladFieldCaptionTD">Show 1&nbsp;</td>
+        <td class="SaladDataTD"><input name="Show_1" value="{Show_1}" maxlength="1" size="1" class="SaladInput">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="SaladFieldCaptionTD">Show 2&nbsp;</td>
+        <td class="SaladDataTD"><input name="Show_2" value="{Show_2}" maxlength="1" size="1" class="SaladInput">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="SaladFieldCaptionTD">Show 3&nbsp;</td>
+        <td class="SaladDataTD"><input name="Show_3" value="{Show_3}" maxlength="1" size="1" class="SaladInput">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="SaladFieldCaptionTD">Show 4&nbsp;</td>
+        <td class="SaladDataTD"><input name="Show_4" value="{Show_4}" maxlength="1" size="1" class="SaladInput">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="SaladFieldCaptionTD">Played&nbsp;</td>
+        <td class="SaladDataTD">
+          <select name="Played">
+            <option value="" selected>Select Value</option>
+            {Played_Options}
+          </select>
+          &nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="2" align="right" class="SaladFooterTD">
+          <!-- BEGIN Button Insert --><input name="Insert" type="submit" value="Add" class="SaladButton"><!-- END Button Insert -->
+          <!-- BEGIN Button Update --><input name="Update" type="submit" value="Submit" class="SaladButton"><!-- END Button Update -->
+          <!-- BEGIN Button Delete --><input name="Delete" type="submit" value="Delete" class="SaladButton"><!-- END Button Delete -->&nbsp;</td>
+      </tr>
+    </table>
+  </form>
+</div>
+<p align="center"><!-- END Record ticket --></p>
+<p align="left">{footer}</p>
+</body>
+</html>

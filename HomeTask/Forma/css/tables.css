@@ -1,0 +1,40 @@
+.tables-example{
+    margin: 20px 0;
+}
+table{
+    margin: 50px auto;
+    text-align: left;
+    border-collapse: separate;
+    /* border-collapse: collapse; */
+    border: 1px solid #ddd;
+    border-spacing: 10px;
+    border-radius: 3px;
+    background: #fdfdfd;
+    font-size: 14px;
+    width: auto;
+  }
+  td,th{
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 3px;
+  }
+  th{
+    text-align: center;
+    background: #E4E4E4;
+  }
+  caption{
+    font-style: italic;
+    text-align: right;
+    color: #547901;
+  }
+  .question{
+    width: 250px;
+  }
+  .answer{
+    width: 250px;
+    background-color:aquamarine;
+  }
+.link{
+  text-align: center;
+  width: 100%;
+}

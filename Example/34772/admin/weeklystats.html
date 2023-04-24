@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>phpScratchAndWin - View Weekly Stats</title>
+<link rel="stylesheet" type="text/css" href="../Themes/Salad/Style.css">
+</head>
+<body bgcolor="#ffffff" link="#008200" alink="#ff0000" vlink="#008200" text="#000000">
+<p>{header}</p>
+<p align="center">
+<!-- BEGIN Grid ticket --><font class="SaladFormHeaderFont">Weekly Stats</font></p>
+<p align="center">
+<table class="SaladFormTABLE" cellspacing="0" cellpadding="3" align="center" background="" border="1">
+  <tr>
+    <td class="SaladColumnTD" nowrap>
+      <!-- BEGIN Sorter Sorter_Week --><a class="SaladSorterLink" href="{Sort_URL}">Week
+      #</a>
+      <!-- BEGIN Asc_On --><img src="../Themes/Salad/AscOn.gif" border="0"><!-- END Asc_On -->
+      <!-- BEGIN Desc_On --><img src="../Themes/Salad/DescOn.gif" border="0"><!-- END Desc_On --><!-- END Sorter Sorter_Week -->&nbsp;</td>
+    <td class="SaladColumnTD" nowrap>
+      <!-- BEGIN Sorter Sorter_Count --><a class="SaladSorterLink" href="{Sort_URL}">Cards
+      Scratched</a>
+      <!-- BEGIN Asc_On --><img src="../Themes/Salad/AscOn.gif" border="0"><!-- END Asc_On -->
+      <!-- BEGIN Desc_On --><img src="../Themes/Salad/DescOn.gif" border="0"><!-- END Desc_On --><!-- END Sorter Sorter_Count -->&nbsp;</td>
+  </tr>
+  <!-- BEGIN Row -->
+  <tr>
+    <td class="SaladDataTD">{Week}&nbsp;</td>
+    <td class="SaladDataTD">{Count}&nbsp;({GetWinsForWeek}&nbsp;Wins)</td>
+  </tr>
+  <!-- END Row -->
+  <!-- BEGIN NoRecords -->
+  <tr>
+    <td class="SaladDataTD" colspan="2">No records&nbsp;</td>
+  </tr>
+  <!-- END NoRecords -->
+  <tr>
+    <td class="SaladFooterTD" colspan="2">&nbsp;</td>
+  </tr>
+</table>
+</p>
+<p align="center"><!-- END Grid ticket --></p>
+<p>{footer}</p>
+</body>
+</html>

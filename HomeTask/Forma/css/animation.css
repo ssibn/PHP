@@ -1,0 +1,169 @@
+
+
+/* ----------animation-transition------ */
+.animation-transition__button{
+    margin: 20px 0;
+    text-align: center;
+}
+.animation-transition__button button{
+    padding: 8px 30px;
+    color: var(--bg-main);
+    background: var(--color-rosy-brown);
+    border: 1px solid var(--color-rosy-brown);
+    border-radius: 5px;
+    font-family: var(--ff-dancing);
+    font-size: 20px;
+    transition: all .5s ease 0s;
+}
+.animation-transition__button button:hover{
+    letter-spacing: 2px;
+    background-color: var(--color-dim-gray);
+    color: var(--bg-main);
+    border: 1px solid var(--bg-main);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+}
+.animation-transition p >span{
+    font-style: italic;
+    font-size: 18px;
+    color: var(--color-rosy-brown);
+}
+
+/* -----animation-transform__example------ */
+.animation-transform__example{
+    margin: 20px 0;
+    background-color: var(--color-gainsboro);
+    border: 1px solid var(--color-dim-gray);
+    border-radius: 0 5px 5px 0;
+    overflow: hidden;
+}
+.animation-transform__example-aside{
+    position: relative;
+    background: var(--color-bisque);
+    max-width: 700px;
+    transform: translateX(-700px);
+    /* transform: translateX(0); */
+    height: 150px;
+    padding: 10px;
+    transition: transform .8s ease-in-out;
+}
+.animation-transform__example-aside::after{
+    content: "нажми на меня";
+    border: 1px solid var(--color-dim-gray);
+    border-radius: 0 0 8px 8px;
+    background: var(--color-dim-gray);
+    color: var(--bg-main);
+    padding: 5px 0;
+    text-align: center;
+    width: 150px;
+    position: absolute;
+    left: 700px;
+    top: 150px;
+    transform: rotate(-90deg);
+    transform-origin: 0 0;
+}
+.animation-transform__example-aside:hover{
+    transform: translateX(0);
+}
+.animation-transform__item{
+    display: inline-block;
+    text-align: center;
+    margin: 0 20px;
+}
+.animation-transform__item h5{
+    margin-bottom: 5px;
+}
+.animation-round{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-color: var(--color-rosy-brown);
+    box-shadow: 0px 2px 10px rgba(0 0 0 / 50%);
+    border-radius: 5px;
+    transition: .5s ease;
+}
+.animation-round.rotate{
+    background-color: var(--color-silver);
+}
+.animation-round.skew{
+    background-color: var(--color-dim-gray);
+}
+.animation-round.scale:hover{
+    transform: scale(1.1);
+}
+.animation-round.rotate:hover{
+    transform: rotate(90deg);
+}
+.animation-round.skew:hover{
+    transform: skewX(30deg);
+}
+
+/* -------animation-property--------- */
+.animation-property .text p > span{
+    color: var(--color-rosy-brown);
+    font-size: 18px;
+}
+.animation-property__syntax{
+    padding: 30px;
+    margin: 0;
+    border-radius: 5px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+    font-style: oblique;
+}
+.animation-property__syntax span{
+    display: inline-block;
+}
+.animation-property__example{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    background-color: var(--color-gainsboro);
+    border: 1px solid var(--color-dim-gray);
+    border-radius: 5px;
+    overflow: hidden;
+}
+.animation-transform__round{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-color: var(--color-rosy-brown);
+    box-shadow: 0px 2px 10px rgba(0 0 0 / 50%);
+    border-radius: 5px;
+    transition: .5s ease;
+}
+.animation-round.animation{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%) rotate(-25deg) skew(25deg);
+    transition: .5s;
+    z-index: 1;
+    opacity: .6;
+}
+.animation-round.animation:nth-child(2){
+    z-index: 2;
+    opacity: .8;
+    animation: animation2 .8s ease-in-out alternate infinite;
+}
+.animation-round.animation:nth-child(3){
+    z-index: 3;
+    opacity: 1;
+    animation: animation3 .8s ease-in-out alternate infinite;
+}
+
+@keyframes animation2 {
+    from{
+        transform: translate(-50%, -30%) rotate(-25deg) skew(25deg);
+    }
+    to {
+        transform: translate(-50%, -60%) rotate(-25deg) skew(25deg);
+    }
+}
+@keyframes animation3 {
+    from{
+        transform: translate(-50%, -30%) rotate(-25deg) skew(25deg);
+    }
+    to {
+        transform: translate(-50%, -90%) rotate(-25deg) skew(25deg);
+    }
+}

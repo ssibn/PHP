@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>phpScratchAndWin - Admin</title>
+<link rel="stylesheet" type="text/css" href="../Themes/Salad/Style.css">
+</head>
+<body>
+<p>{header}</p>
+<p>
+<table cellspacing="5" cellpadding="5" background="" border="0" class="SaladFormTABLE" align="center">
+  <tr>
+    <td class="SaladColumnTD">Total Cards Scratched Off this Month:</td>
+    <td class="SaladDataTD">
+      <p align="right"><a href="{GetPlaysThisMonth_Src}">{GetPlaysThisMonth}</a></p>
+    </td>
+  </tr>
+  <tr>
+    <td class="SaladColumnTD">Total Wins this Month:</td>
+    <td class="SaladDataTD">
+      <p align="right"><a href="{GetWinsThisMonth_Src}">{GetWinsThisMonth}</a></p>
+    </td>
+  </tr>
+  <tr>
+    <td class="SaladColumnTD">Total Cards Scratched Off Today:</td>
+    <td class="SaladDataTD">
+      <p align="right"><a href="{GetPlaysToday_Src}">{GetPlaysToday}</a></p>
+    </td>
+  </tr>
+  <tr>
+    <td class="SaladColumnTD">Total Wins Today:</td>
+    <td class="SaladDataTD">
+      <p align="right"><a href="{GetTotalWinsToday_Src}">{GetTotalWinsToday}</a></p>
+    </td>
+  </tr>
+</table>
+</p>
+<p>
+<table cellspacing="5" cellpadding="5" background="" border="0" class="SaladFormTABLE" align="center">
+  <tr>
+    <td colspan="3" class="SaladColumnTD">
+      <p align="center">Maintenance</p>
+    </td>
+  </tr>
+  <tr>
+    <td class="SaladDataTD"><a href="{Link1_Src}">Delete All Non-Winning Tickets</a></td>
+    <td class="SaladDataTD"><a href="{Link2_Src}">Delete All Unplayed Tickets</a></td>
+    <td class="SaladDataTD"><a href="{Link3_Src}">Delete All Winning Tickets</a></td>
+  </tr>
+</table>
+</p>
+<p>{footer}</p>
+</body>
+</html>
