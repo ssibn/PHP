@@ -1,3 +1,4 @@
+<?php
 $users = ['branko', 'ivana', 'luka', 'ivano'];
 
 usort($users, function ($a, $b) {

@@ -1,1 +1,2 @@
+<?php
 Caught Flaw!

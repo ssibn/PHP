@@ -1,3 +1,4 @@
+<?php
 // The class constant - using 'const' keyword
 class Rift {
   const APP = [

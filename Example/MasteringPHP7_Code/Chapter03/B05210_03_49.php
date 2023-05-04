@@ -1,3 +1,4 @@
+<?php
     bool error_log (
        string $message
       [, int $message_type = 0

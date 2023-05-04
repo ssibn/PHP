@@ -1,3 +1,4 @@
+<?php
 declare(strict_types=1);
 
 function register(string $email, int $age, bool $notify) {

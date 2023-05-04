@@ -20,9 +20,9 @@
     ?>
 <body>
     ADD
-    ADD CONSTRAIT
+    ADD CONSTRAINT
     ALTER
-    ALTER COLUM
+    ALTER COLUMN
     ALTER TABLE 
     ALL 
     AND

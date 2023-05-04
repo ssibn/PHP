@@ -1,3 +1,4 @@
+<?php
 Throwable {
   abstract public string getMessage (void)
   abstract public int getCode (void)

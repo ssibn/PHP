@@ -1,3 +1,4 @@
+<?php
     bool handler (
       int $errno ,
       string $errstr

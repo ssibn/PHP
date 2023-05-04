@@ -1,3 +1,4 @@
+<?php
 $foo()['bar']();
 
 [$obj1, $obj2][0]->prop;

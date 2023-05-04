@@ -1,4 +1,5 @@
- function export(): iterable {
+<?php
+function export(): iterable {
    return [
      'Johny',
      'Tom',

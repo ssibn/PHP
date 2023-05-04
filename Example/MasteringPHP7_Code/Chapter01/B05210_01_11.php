@@ -1,3 +1,4 @@
+<?php
 $letters = (function () {
   yield 'A';
   yield 'B';

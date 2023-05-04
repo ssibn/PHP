@@ -1,3 +1,4 @@
+<?php
     DivisionByZeroError extends ArithmeticError {
       final public string Error::getMessage (void)
       final public Throwable Error::getPrevious (void)

@@ -1,3 +1,4 @@
+<?php
 function welcome(?string $name) {
    echo $name;
 }

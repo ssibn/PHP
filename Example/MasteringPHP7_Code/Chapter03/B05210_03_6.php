@@ -1,3 +1,4 @@
+<?php
 interface Throwable
  | Error implements Throwable
    | TypeError extends Error

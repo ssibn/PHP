@@ -1,3 +1,4 @@
+<?php
      ArithmeticError extends Error {
        final public string Error::getMessage (void)
        final public Throwable Error::getPrevious (void)

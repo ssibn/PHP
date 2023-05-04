@@ -1,3 +1,4 @@
+<?php
 $obj = new class() {};
 
 $obj2 = new class($a, $b) {
