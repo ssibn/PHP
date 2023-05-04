@@ -1,3 +1,4 @@
+<?php
 /*** expression syntax ***/
 $$foo['bar']['baz']
 

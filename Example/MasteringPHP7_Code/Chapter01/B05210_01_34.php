@@ -1,3 +1,4 @@
+<?php
 function welcome($name): ?string
   {
     return null; // valid

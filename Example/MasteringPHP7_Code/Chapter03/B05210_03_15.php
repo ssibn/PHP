@@ -1,1 +1,2 @@
- Caught: Bit shift by negative number
+<?php
+Caught: Bit shift by negative number

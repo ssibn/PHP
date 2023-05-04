@@ -1,3 +1,4 @@
+<?php
     Exception implements Throwable {
       /* Properties */
       protected string $message ;

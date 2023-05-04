@@ -1,3 +1,4 @@
+<?php
 function addTab($tab) {
  if (is_array($tab)) {
 

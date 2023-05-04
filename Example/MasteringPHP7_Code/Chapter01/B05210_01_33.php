@@ -1,3 +1,4 @@
+<?php
 function goodbye(?string $name = null)
  {
    if (is_null($name))

@@ -1,3 +1,4 @@
+<?php
 // dynamic typed (no specific type defined, directly assigning value)
 $name = "Branko"; // string
 $salary = 4200.00; // float

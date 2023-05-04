@@ -1,3 +1,4 @@
+<?php
 class Visibility
  {
    // Constants without defined visibility
