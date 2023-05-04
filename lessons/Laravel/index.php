@@ -1,7 +1,7 @@
 <?php
     requare_once('first_page.php');
 
-    Route:::get('/', function (){
+    Route:::get('/', function user(){
         class User;
         return 'Hello Laravel';
     })
