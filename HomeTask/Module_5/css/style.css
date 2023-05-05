@@ -6,7 +6,7 @@
     body
 {
     background-color: #b6cbe8;
-    background-image: url('/img/cloud.png');
+    background-image: url('../img/cloud.png');
     background-attachment: fixed;
     animation: cloud 10s ease infinite;
 }

@@ -22,10 +22,6 @@
                 function __construct($name = "", $filters = "Price"){
                     $this -> name = $name;
                 }
-                function Show()
-                {
-                    echo 'Vertex: ('.$this->x.','.$this->y.') <br/>';
-                }
             }
         ?>
         <!-- если правильно понял задание -->
