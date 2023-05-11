@@ -97,7 +97,7 @@
             </div>
             <div class="row">
             <select class="form-select" aria-label="Default select example">
-            <option selected>Open this select menu</option>
+            <option selected>Open this select menugi</option>
             <option value="1">Phone</option>
             <option value="2">Monitor</option>
             </select>
