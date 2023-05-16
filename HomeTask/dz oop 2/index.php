@@ -111,23 +111,81 @@
                     <h4>Category</h4>
                 </div>
             </div>
-            <div class="row">
-            <select class="form-select" aria-label="Default select example">
-            <option selected>Open this select menugi</option>
-            <option value="1"><? $phone = echo "Phone"?></option>
+            <!-- ALTER TABLE `category` CHANGE `price` `price` INT(11) NULL DEFAULT NULL, CHANGE `ram` `ram` INT(11) NULL DEFAULT NULL, CHANGE `countsim` `countsim` INT(11) NULL DEFAULT NULL, CHANGE `hdd` `hdd` INT(11) NULL DEFAULT NULL, CHANGE `os` `os` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL, CHANGE `diagonal` `diagonal` INT(11) NULL DEFAULT NULL, CHANGE `frequency` `frequency` INT(11) NULL DEFAULT NULL; изменить таблицу -->
+
+            <!-- ALTER TABLE `category` ADD `колонка` INT NULL DEFAULT NULL AFTER `после этой`; добавить колонку в таблицу-->
+
+            <!-- ALTER TABLE `category` DROP `колонка`; удалить колонку -->
+            <form action="./vendor/createCategories.php" method="post">
+            <input type="text" name="name" placeholder="Name">
+            <input type="text" name="price" placeholder="Price">
+            <button type="submit">Add</button>
+        </form>
+<form class="row g-3 needs-validation" action="./vendor/createCategories.php" method="post">
+  <div class="col-md-6">
+    <label for="validationCustom04" class="form-label">Name Category</label>
+    <select class="form-select">
+      <option selected name="name" value="Phone">Phone</option>
+      <option name="name" value="Phone">Monitor</option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <label class="form-label">Price</label>
+    <input type="number" class="form-control" name="price">
+  </div>
+  <div class="col-md-3">
+    <label class="form-label">RAM</label>
+    <input type="number" class="form-control" name="ram">
+  </div>
+  <div class="col-md">
+    <label class="form-label">Count sim</label>
+    <input type="number" class="form-control" name="countsim">
+  </div>
+  <div class="col-md">
+    <label class="form-label">HDD</label>
+    <input type="number" class="form-control" name="hdd">
+  </div>
+  <div class="col-md">
+    <label class="form-label">OS</label>
+    <input type="text" class="form-control" name="os">
+  </div>
+  <div class="col-md">
+    <label class="form-label">Diagonal</label>
+    <input type="number" class="form-control" name="diagonal">
+  </div>
+  <div class="col-md">
+    <label class="form-label">Frequency</label>
+    <input type="number" class="form-control" name="frequency">
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </div>
+</form>
+
             <?php
-            if (isset($phone)){
-                {
-                ?>
-                    <ul>
-                        <li name="liname">productValue[1]?></li>
-                        <li name="liprice">productValue[2]?></li>
-                    </ul>
-                <?php
-                } 
-            }
+                require_once ('./config/connect.php');
+                $product = mysqli_query($connect, "SELECT * FROM `category`");
+                $product = mysqli_fetch_all($category);
+                // foreach ($category as $categoryValue)
+                // {
             ?>
-            <option value="2">Monitor</option>
+            <div class="row">
+                <select class="form-select" aria-label="Default select example">
+                <option selected>Open this select menugi</option>
+                <option value="phone" name="phone"><?= $productValue[1]['phone']?></option>
+                <?php
+                if (isset($phone)){
+                    {
+                    ?>
+                        <ul>
+                            <li name="liname">productValue[1]?></li>
+                            <li name="liprice">productValue[2]?></li>
+                        </ul>
+                    <?php
+                    } 
+                }
+                ?>
+            <option value="monitor" name="monitor"><?= $productValue[1]['monitor']?></option>
             </select>
             </div>
         </div>
