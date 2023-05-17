@@ -128,23 +128,23 @@
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Name</label>
-                    <input type="number" class="form-control" name="name">
+                    <input type="text" class="form-control" name="name">
                 </div>
                 <div class="col-md-4">
                     <label class="form-label">Price</label>
-                    <input type="number" class="form-control" name="price">
+                    <input type="text" class="form-control" name="price">
                 </div>
                 <div class="col-md-4">
                     <label class="form-label">RAM</label>
-                    <input type="number" class="form-control" name="ram">
+                    <input type="text" class="form-control" name="ram">
                 </div>
                 <div class="col-md-4">
                     <label class="form-label">Count sim</label>
-                    <input type="number" class="form-control" name="countsim">
+                    <input type="text" class="form-control" name="countsim">
                 </div>
                 <div class="col-md">
                     <label class="form-label">HDD</label>
-                    <input type="number" class="form-control" name="hdd">
+                    <input type="text" class="form-control" name="hdd">
                 </div>
                 <div class="col-md">
                     <label class="form-label">OS</label>
@@ -152,11 +152,11 @@
                 </div>
                 <div class="col-md">
                     <label class="form-label">Diagonal</label>
-                    <input type="number" class="form-control" name="diagonal">
+                    <input type="text" class="form-control" name="diagonal">
                 </div>
                 <div class="col-md">
                     <label class="form-label">Frequency</label>
-                    <input type="number" class="form-control" name="frequency">
+                    <input type="text" class="form-control" name="frequency">
                 </div>
                 <div class="col-12">
                     <button class="btn btn-primary" type="submit">Submit form</button>
@@ -173,7 +173,8 @@
                 </div>
             </div>
             <?php
-            $name = mysqli_query($connect, "SELECT DISTINCT `name` FROM `category`");
+            require_once ('./config/connect.php');
+            $name = mysqli_query($connect, "SELECT DISTINCT `categories` FROM `category`");
             $name = mysqli_fetch_all($name);
             foreach ($name as $nameValue)
             {
@@ -181,10 +182,9 @@
                 foreach ($result as $value){
                     $categori = $result[0];
                 ?>
-                <a href='./index.php?id=<?= $result[0] ?>'><h3><?= $result[0] ?></h3></a>
+                <a href='./index.php?categories=<?= $result[0] ?>'><h3><?= $result[0] ?></h3></a>
                 <?php
                 }
-                // print_r($name);
             }
             ?>
             <table class="table">
@@ -201,30 +201,22 @@
                     </tr>
                 </thead>
                 <?php
-                $name = $_GET['id'];
-                $products = mysqli_query($connect, "SELECT * FROM `category` WHERE `name` = '$name'"); 
+                $name = $_GET['categories'];
+                $products = mysqli_query($connect, "SELECT * FROM `category` WHERE `categories` = '$name'"); 
                 $products = mysqli_fetch_all($products);
                 foreach ($products as $product): ?>
-                <?php endforeach ?> 
-                
-            <h3>Вы выбрали: <?= $product[1] ?></h3>
-    
-            <h4>В этой категории:</h4>
-            <?php
-            foreach ($products as $product): ?>
-            <p><?= $product[2] ?> : <?= $product[3] ?></p>
-            <?php endforeach ?> 
                 <tbody>
                     <tr>
-                        <th scope="row"><?= $product[1] ?></th>
-                        <td><?= $product[2] ?></td>
+                        <th scope="row"><?= $product[2] ?></th>
                         <td><?= $product[3] ?></td>
                         <td><?= $product[4] ?></td>
                         <td><?= $product[5] ?></td>
                         <td><?= $product[6] ?></td>
                         <td><?= $product[7] ?></td>
                         <td><?= $product[8] ?></td>
+                        <td><?= $product[9] ?></td>
                     </tr>
+                    <?php endforeach ?> 
                 </tbody>
             </table>
         </div>
