@@ -117,6 +117,8 @@
 
             <!-- ALTER TABLE `category` DROP `колонка`; удалить колонку -->
 
+            <!-- DELETE FROM category WHERE `category`.`id` = 10 -->
+            
             <!-- Это для себя -->
             <form class="row g-3 needs-validation" action="./vendor/createCategories.php" method="post">
                 <div class="col-md-6">
