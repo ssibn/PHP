@@ -118,7 +118,7 @@
             <!-- ALTER TABLE `category` DROP `колонка`; удалить колонку -->
 
             <!-- DELETE FROM category WHERE `category`.`id` = 10 -->
-            
+
             <!-- Это для себя -->
             <form class="row g-3 needs-validation" action="./vendor/createCategories.php" method="post">
                 <div class="col-md-6">
@@ -183,12 +183,56 @@
                 $result = array_unique($nameValue);
                 foreach ($result as $value){
                     $categori = $result[0];
-                ?>
+                    ?>
                 <a href='./index.php?categories=<?= $result[0] ?>'><h3><?= $result[0] ?></h3></a>
                 <?php
                 }
             }
-            ?>
+            $categories = $_GET['categories'];
+            $products = mysqli_query($connect, "SELECT * FROM `category` WHERE `categories` = '$categories'"); 
+            $products = mysqli_fetch_all($products);
+            foreach ($products as $product):
+            endforeach; 
+            if ($product[1] == "Phone") 
+            { ?>
+                <form class="row g-3 needs-validation" action="./vendor/createCategories.php" method="post">
+                <div class="col-md">
+                    <label class="form-label">Price</label>
+                    <input type="text" class="form-control" name="price" placeholder='price'>
+                </div>
+                <div class="col-md">
+                    <label class="form-label">RAM</label>
+                    <input type="text" class="form-control" name="ram">
+                </div>
+                <div class="col-md">
+                    <label class="form-label">SIMs</label>
+                    <input type="text" class="form-control" name="countsim">
+                </div>
+                <div class="col-md">
+                    <label class="form-label">HDD</label>
+                    <input type="text" class="form-control" name="hdd">
+                </div>
+                <div class="col-md">
+                    <button class="btn btn-primary" name="submit" type="submit">Apply</button>
+                </div>
+            </form>
+            <?php
+            if (isset($_POST['submit'])){
+                $search = $_POST["search"];
+                $price = $_POST["price"];
+                $ram = $_POST["ram"];
+                $countsim = $_POST["countsim"];
+                $hdd = $_POST["hdd"];
+                $query = mysqli_query($connect, "SELECT * FROM `categor` WHERE `categoryName` LIKE '%$search%' ");
+                $row = mysqli_fetch_assoc($query);
+                echo "<h3>Result</h3><h4>" . $row['categoryName'] . "</h4><p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>"; 
+                while($row = mysqli_fetch_assoc($query)) echo "<p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>";
+            }
+            }
+             ?> 
+            
+
+
             <table class="table">
                 <thead>
                     <tr>
@@ -203,9 +247,6 @@
                     </tr>
                 </thead>
                 <?php
-                $name = $_GET['categories'];
-                $products = mysqli_query($connect, "SELECT * FROM `category` WHERE `categories` = '$name'"); 
-                $products = mysqli_fetch_all($products);
                 foreach ($products as $product): ?>
                 <tbody>
                     <tr>
