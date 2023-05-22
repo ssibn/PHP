@@ -228,6 +228,40 @@
                 echo "<h3>Result</h3><h4>" . $row['categoryName'] . "</h4><p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>"; 
                 while($row = mysqli_fetch_assoc($query)) echo "<p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>";
             }
+            } else if ($product[1] == "Phone") { ?>
+                <form class="row g-3 needs-validation" action="./vendor/createCategories.php" method="post">
+                <div class="col-md">
+                    <label class="form-label">Price</label>
+                    <input type="text" class="form-control" name="price" placeholder='price'>
+                </div>
+                <div class="col-md">
+                    <label class="form-label">RAM</label>
+                    <input type="text" class="form-control" name="ram">
+                </div>
+                <div class="col-md">
+                    <label class="form-label">SIMs</label>
+                    <input type="text" class="form-control" name="countsim">
+                </div>
+                <div class="col-md">
+                    <label class="form-label">HDD</label>
+                    <input type="text" class="form-control" name="hdd">
+                </div>
+                <div class="col-md">
+                    <button class="btn btn-primary" name="submit" type="submit">Apply</button>
+                </div>
+            </form>
+            <?php
+            if (isset($_POST['submit'])){
+                $search = $_POST["search"];
+                $price = $_POST["price"];
+                $ram = $_POST["ram"];
+                $countsim = $_POST["countsim"];
+                $hdd = $_POST["hdd"];
+                $query = mysqli_query($connect, "SELECT * FROM `categor` WHERE `categoryName` LIKE '%$search%' ");
+                $row = mysqli_fetch_assoc($query);
+                echo "<h3>Result</h3><h4>" . $row['categoryName'] . "</h4><p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>"; 
+                while($row = mysqli_fetch_assoc($query)) echo "<p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>";
+            }
             }
              ?> 
             
