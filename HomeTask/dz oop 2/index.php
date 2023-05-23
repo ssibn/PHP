@@ -120,48 +120,56 @@
             <!-- DELETE FROM category WHERE `category`.`id` = 10 -->
 
             <!-- Это для себя -->
-            <form class="row g-3 needs-validation" action="./vendor/createCategories.php" method="post">
-                <div class="col-md-6">
-                    <label for="validationCustom04" class="form-label">Name Category</label>
-                    <select class="form-select" name="categories">
-                        <option value="Phone">Phone</option>
-                        <option value="Monitor">Monitor</option>
-                    </select>
-                </div>
+            
+            <form class="row g-3 needs-validation" action="./vendor/createCategoriesPhones.php" method="post">
                 <div class="col-md-6">
                     <label class="form-label">Name</label>
                     <input type="text" class="form-control" name="name">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label class="form-label">Price</label>
                     <input type="text" class="form-control" name="price">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3" id="ram">
                     <label class="form-label">RAM</label>
                     <input type="text" class="form-control" name="ram">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" id="countsim">
                     <label class="form-label">Count sim</label>
                     <input type="text" class="form-control" name="countsim">
                 </div>
-                <div class="col-md">
+                <div class="col-md-4" id="hdd">
                     <label class="form-label">HDD</label>
                     <input type="text" class="form-control" name="hdd">
                 </div>
-                <div class="col-md">
+                <div class="col-md-4" id="os">
                     <label class="form-label">OS</label>
                     <input type="text" class="form-control" name="os">
                 </div>
-                <div class="col-md">
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Add Phones</button>
+                </div>
+            </form>
+
+            <form class="row g-3 needs-validation" action="./vendor/createCategoriesMonitors.php" method="post">
+                <div class="col-md-6">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Price</label>
+                    <input type="text" class="form-control" name="price">
+                </div>
+                <div class="col-md-6" id="diagonal">
                     <label class="form-label">Diagonal</label>
                     <input type="text" class="form-control" name="diagonal">
                 </div>
-                <div class="col-md">
+                <div class="col-md-6" id="frequency">
                     <label class="form-label">Frequency</label>
                     <input type="text" class="form-control" name="frequency">
                 </div>
                 <div class="col-12">
-                    <button class="btn btn-primary" type="submit">Submit form</button>
+                    <button class="btn btn-primary" type="submit">Add Monitors</button>
                 </div>
             </form>
         </div>
@@ -176,6 +184,13 @@
             </div>
             <?php
             require_once ('./config/connect.php');
+            require_once ('./vendor/task5.php');
+            $categories = $_GET['categories'];
+
+            $products = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `category` WHERE `categories` = '$categories'"));
+            $productsPho = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `phones` WHERE `categories` = '$categories'"));
+            $productsMon = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `monitors` WHERE `categories` = '$categories'"));
+
             $name = mysqli_query($connect, "SELECT DISTINCT `categories` FROM `category`");
             $name = mysqli_fetch_all($name);
             foreach ($name as $nameValue)
@@ -188,9 +203,7 @@
                 <?php
                 }
             }
-            $categories = $_GET['categories'];
-            $products = mysqli_query($connect, "SELECT * FROM `category` WHERE `categories` = '$categories'"); 
-            $products = mysqli_fetch_all($products);
+
             foreach ($products as $product):
             endforeach; 
             if ($product[1] == "Phone") 
@@ -198,75 +211,39 @@
                 <form class="row g-3 needs-validation" action="./vendor/createCategories.php" method="post">
                 <div class="col-md">
                     <label class="form-label">Price</label>
-                    <input type="text" class="form-control" name="price" placeholder='price'>
+                    <input type="text" class="form-control" name="price" placeholder='<?= $priceMin[0][0] ?> - <?= $priceMax[0][0] ?>'>
                 </div>
                 <div class="col-md">
                     <label class="form-label">RAM</label>
-                    <input type="text" class="form-control" name="ram">
+                    <input type="text" class="form-control" name="ram" placeholder='<?= $ramMin[0][0] ?> - <?= $ramMax[0][0] ?>'>
                 </div>
                 <div class="col-md">
                     <label class="form-label">SIMs</label>
-                    <input type="text" class="form-control" name="countsim">
+                    <input type="text" class="form-control" name="countsim" placeholder='<?= $ramMin[0][0] ?> - <?= $ramMax[0][0] ?>'>
                 </div>
                 <div class="col-md">
                     <label class="form-label">HDD</label>
-                    <input type="text" class="form-control" name="hdd">
+                    <input type="text" class="form-control" name="hdd" placeholder='<?= $hddMin[0][0] ?> - <?= $hddMax[0][0] ?>'>
                 </div>
                 <div class="col-md">
                     <button class="btn btn-primary" name="submit" type="submit">Apply</button>
                 </div>
             </form>
             <?php
-            if (isset($_POST['submit'])){
-                $search = $_POST["search"];
-                $price = $_POST["price"];
-                $ram = $_POST["ram"];
-                $countsim = $_POST["countsim"];
-                $hdd = $_POST["hdd"];
-                $query = mysqli_query($connect, "SELECT * FROM `categor` WHERE `categoryName` LIKE '%$search%' ");
-                $row = mysqli_fetch_assoc($query);
-                echo "<h3>Result</h3><h4>" . $row['categoryName'] . "</h4><p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>"; 
-                while($row = mysqli_fetch_assoc($query)) echo "<p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>";
-            }
-            } else if ($product[1] == "Phone") { ?>
-                <form class="row g-3 needs-validation" action="./vendor/createCategories.php" method="post">
-                <div class="col-md">
-                    <label class="form-label">Price</label>
-                    <input type="text" class="form-control" name="price" placeholder='price'>
-                </div>
-                <div class="col-md">
-                    <label class="form-label">RAM</label>
-                    <input type="text" class="form-control" name="ram">
-                </div>
-                <div class="col-md">
-                    <label class="form-label">SIMs</label>
-                    <input type="text" class="form-control" name="countsim">
-                </div>
-                <div class="col-md">
-                    <label class="form-label">HDD</label>
-                    <input type="text" class="form-control" name="hdd">
-                </div>
-                <div class="col-md">
-                    <button class="btn btn-primary" name="submit" type="submit">Apply</button>
-                </div>
-            </form>
-            <?php
-            if (isset($_POST['submit'])){
-                $search = $_POST["search"];
-                $price = $_POST["price"];
-                $ram = $_POST["ram"];
-                $countsim = $_POST["countsim"];
-                $hdd = $_POST["hdd"];
-                $query = mysqli_query($connect, "SELECT * FROM `categor` WHERE `categoryName` LIKE '%$search%' ");
-                $row = mysqli_fetch_assoc($query);
-                echo "<h3>Result</h3><h4>" . $row['categoryName'] . "</h4><p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>"; 
-                while($row = mysqli_fetch_assoc($query)) echo "<p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>";
-            }
-            }
-             ?> 
-            
+            // if (isset($_POST['submit'])){
+            //     $search = $_POST["search"];
+            //     $price = $_POST["price"];
+            //     $ram = $_POST["ram"];
+            //     $countsim = $_POST["countsim"];
+            //     $hdd = $_POST["hdd"];
+            //     $query = mysqli_query($connect, "SELECT * FROM `categor` WHERE `categoryName` LIKE '%$search%' ");
+            //     $row = mysqli_fetch_assoc($query);
+            //     echo "<h3>Result</h3><h4>" . $row['categoryName'] . "</h4><p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>"; 
+            //     while($row = mysqli_fetch_assoc($query)) echo "<p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>";
+                
+            // }
 
-
+            ?> 
             <table class="table">
                 <thead>
                     <tr>
@@ -276,26 +253,81 @@
                         <th scope="col">Count sim</th>
                         <th scope="col">HDD</th>
                         <th scope="col">OS</th>
+                    </tr>
+                </thead>
+                <?php
+                foreach ($productsPho as $phone): ?>
+                <tbody>
+                    <tr>
+                        <th scope="row"><?= $phone[2] ?></th>
+                        <td><?= $phone[3] ?></td>
+                        <td><?= $phone[4] ?></td>
+                        <td><?= $phone[5] ?></td>
+                        <td><?= $phone[6] ?></td>
+                        <td><?= $phone[7] ?></td>
+                    </tr>
+                    <?php endforeach ?> 
+                </tbody>
+            </table>
+            <?php
+
+
+            } else if ($product[1] == "Monitor") { ?>
+                <form class="row g-3 needs-validation" action="./vendor/createCategories.php" method="post">
+                <div class="col-md">
+                    <label class="form-label">Price</label>
+                    <input type="text" class="form-control" name="price" placeholder='<?= $priceMonMin[0][0] ?> - <?= $priceMonMax[0][0] ?>'>
+                </div>
+                <div class="col-md">
+                    <label class="form-label">Diagonal</label>
+                    <input type="text" class="form-control" name="diagonal" placeholder='<?= $diagonalMin[0][0] ?> - <?= $diagonalMax[0][0] ?>'>
+                </div>
+                <div class="col-md">
+                    <label class="form-label">Frequency</label>
+                    <input type="text" class="form-control" name="frequency" placeholder='<?= $frequencyMin[0][0] ?> - <?= $frequencyMax[0][0] ?>'>
+                </div>
+                <div class="col-md">
+                    <button class="btn btn-primary" name="submit" type="submit">Apply</button>
+                </div>
+            </form>
+            <?php
+            // if (isset($_POST['submit'])){
+            //     $search = $_POST["search"];
+            //     $price = $_POST["price"];
+            //     $ram = $_POST["ram"];
+            //     $countsim = $_POST["countsim"];
+            //     $hdd = $_POST["hdd"];
+            //     $query = mysqli_query($connect, "SELECT * FROM `categor` WHERE `categoryName` LIKE '%$search%' ");
+            //     $row = mysqli_fetch_assoc($query);
+            //     echo "<h3>Result</h3><h4>" . $row['categoryName'] . "</h4><p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>"; 
+            //     while($row = mysqli_fetch_assoc($query)) echo "<p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>";
+            // }
+
+            ?> 
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
                         <th scope="col">Diagonal</th>
                         <th scope="col">Frequency</th>
                     </tr>
                 </thead>
                 <?php
-                foreach ($products as $product): ?>
+                foreach ($productsMon as $monitor): ?>
                 <tbody>
                     <tr>
-                        <th scope="row"><?= $product[2] ?></th>
-                        <td><?= $product[3] ?></td>
-                        <td><?= $product[4] ?></td>
-                        <td><?= $product[5] ?></td>
-                        <td><?= $product[6] ?></td>
-                        <td><?= $product[7] ?></td>
-                        <td><?= $product[8] ?></td>
-                        <td><?= $product[9] ?></td>
+                        <th scope="row"><?= $monitor[2] ?></th>
+                        <td><?= $monitor[3] ?></td>
+                        <td><?= $monitor[4] ?></td>
+                        <td><?= $monitor[5] ?></td>
                     </tr>
                     <?php endforeach ?> 
                 </tbody>
             </table>
+            <?php
+            }
+             ?>
         </div>
     </div>
 <?php
@@ -342,6 +374,7 @@
 
      <h2>Как мог <img src="./img/smile.png" alt="">  За дизайн простите и ошибки если найдете</h2>
 
-    <script src="js/bootstrap.bundle.min.js"></script>
+     <script src="./js/script.js"></script>
+     <script src="./js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
