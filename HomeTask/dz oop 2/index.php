@@ -128,19 +128,19 @@
                 </div>
                 <div class="col-md-3">
                     <label class="form-label">Price</label>
-                    <input type="text" class="form-control" name="price">
+                    <input type="number" class="form-control" name="price">
                 </div>
                 <div class="col-md-3" id="ram">
                     <label class="form-label">RAM</label>
-                    <input type="text" class="form-control" name="ram">
+                    <input type="number" class="form-control" name="ram">
                 </div>
                 <div class="col-md-4" id="countsim">
                     <label class="form-label">Count sim</label>
-                    <input type="text" class="form-control" name="countsim">
+                    <input type="number" class="form-control" name="countsim">
                 </div>
                 <div class="col-md-4" id="hdd">
                     <label class="form-label">HDD</label>
-                    <input type="text" class="form-control" name="hdd">
+                    <input type="number" class="form-control" name="hdd">
                 </div>
                 <div class="col-md-4" id="os">
                     <label class="form-label">OS</label>
@@ -158,15 +158,15 @@
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Price</label>
-                    <input type="text" class="form-control" name="price">
+                    <input type="number" class="form-control" name="price">
                 </div>
                 <div class="col-md-6" id="diagonal">
                     <label class="form-label">Diagonal</label>
-                    <input type="text" class="form-control" name="diagonal">
+                    <input type="number" class="form-control" name="diagonal">
                 </div>
                 <div class="col-md-6" id="frequency">
                     <label class="form-label">Frequency</label>
-                    <input type="text" class="form-control" name="frequency">
+                    <input type="number" class="form-control" name="frequency">
                 </div>
                 <div class="col-12">
                     <button class="btn btn-primary" type="submit">Add Monitors</button>
@@ -191,8 +191,7 @@
             $productsPho = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `phones` WHERE `categories` = '$categories'"));
             $productsMon = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `monitors` WHERE `categories` = '$categories'"));
 
-            $name = mysqli_query($connect, "SELECT DISTINCT `categories` FROM `category`");
-            $name = mysqli_fetch_all($name);
+            $name = mysqli_fetch_all( mysqli_query($connect, "SELECT DISTINCT `categories` FROM `category`"));
             foreach ($name as $nameValue)
             {
                 $result = array_unique($nameValue);
@@ -208,40 +207,64 @@
             endforeach; 
             if ($product[1] == "Phone") 
             { ?>
-                <form class="row g-3 needs-validation" action="./vendor/createCategories.php" method="post">
+                <form class="row g-3 needs-validation" method="post">
                 <div class="col-md">
                     <label class="form-label">Price</label>
-                    <input type="text" class="form-control" name="price" placeholder='<?= $priceMin[0][0] ?> - <?= $priceMax[0][0] ?>'>
+                    <input type="number" class="form-control" name="priceSearch" placeholder='<?= $priceMin[0][0] ?> - <?= $priceMax[0][0] ?>' value=''>
                 </div>
                 <div class="col-md">
                     <label class="form-label">RAM</label>
-                    <input type="text" class="form-control" name="ram" placeholder='<?= $ramMin[0][0] ?> - <?= $ramMax[0][0] ?>'>
+                    <input type="number" class="form-control" name="ramSearch" placeholder='<?= $ramMin[0][0] ?> - <?= $ramMax[0][0] ?>' value=''>
                 </div>
                 <div class="col-md">
                     <label class="form-label">SIMs</label>
-                    <input type="text" class="form-control" name="countsim" placeholder='<?= $ramMin[0][0] ?> - <?= $ramMax[0][0] ?>'>
+                    <input type="number" class="form-control" name="countsimSearch" placeholder='<?= $ramMin[0][0] ?> - <?= $ramMax[0][0] ?>' value=''>
                 </div>
                 <div class="col-md">
                     <label class="form-label">HDD</label>
-                    <input type="text" class="form-control" name="hdd" placeholder='<?= $hddMin[0][0] ?> - <?= $hddMax[0][0] ?>'>
+                    <input type="number" class="form-control" name="hddSearch" placeholder='<?= $hddMin[0][0] ?> - <?= $hddMax[0][0] ?>' value=''>
                 </div>
                 <div class="col-md">
                     <button class="btn btn-primary" name="submit" type="submit">Apply</button>
                 </div>
             </form>
             <?php
-            // if (isset($_POST['submit'])){
-            //     $search = $_POST["search"];
-            //     $price = $_POST["price"];
-            //     $ram = $_POST["ram"];
-            //     $countsim = $_POST["countsim"];
-            //     $hdd = $_POST["hdd"];
-            //     $query = mysqli_query($connect, "SELECT * FROM `categor` WHERE `categoryName` LIKE '%$search%' ");
-            //     $row = mysqli_fetch_assoc($query);
-            //     echo "<h3>Result</h3><h4>" . $row['categoryName'] . "</h4><p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>"; 
-            //     while($row = mysqli_fetch_assoc($query)) echo "<p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>";
+            if (isset($_POST['submit'])){
+                $search1 = $_POST["priceSearch"];
+                $search2 = $_POST["ramSearch"];
+                $search3 = $_POST["countsimSearch"];
+                $search4 = $_POST["hddSearch"];
+                $query = mysqli_query($connect, "SELECT * FROM `phones` WHERE `price`=$search1 or `ram`=$search2 or `countsim`=$search3 or `hdd`=$search4");
+                $row = mysqli_fetch_assoc($query); ?>
+                <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">RAM</th>
+                        <th scope="col">Count sim</th>
+                        <th scope="col">HDD</th>
+                        <th scope="col">OS</th>
+                    </tr>
+                </thead>
                 
-            // }
+                <tbody> <?php
+                while($row = mysqli_fetch_assoc($query)) { ?>
+                
+                    <tr>
+                        <th scope="row"><?= $row['name'] ?></th>
+                        <td><?= $row['price'] ?></td>
+                        <td><?= $row['ram'] ?></td>
+                        <td><?= $row['countsim'] ?></td>
+                        <td><?= $row['hdd'] ?></td>
+                        <td><?= $row['os'] ?></td>
+                    </tr>
+                
+            <?php
+                } ?>
+                </tbody>
+            </table> <?php
+            } else {
 
             ?> 
             <table class="table">
@@ -270,10 +293,11 @@
                 </tbody>
             </table>
             <?php
+            }
 
 
             } else if ($product[1] == "Monitor") { ?>
-                <form class="row g-3 needs-validation" action="./vendor/createCategories.php" method="post">
+                <form class="row g-3 needs-validation" action="./vendor/createCategoriesPhones.php" method="post">
                 <div class="col-md">
                     <label class="form-label">Price</label>
                     <input type="text" class="form-control" name="price" placeholder='<?= $priceMonMin[0][0] ?> - <?= $priceMonMax[0][0] ?>'>
