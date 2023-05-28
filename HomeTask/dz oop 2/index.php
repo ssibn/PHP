@@ -120,8 +120,18 @@
             <!-- DELETE FROM category WHERE `category`.`id` = 10 -->
 
             <!-- Это для себя -->
-            
-            <form class="row g-3 needs-validation" action="./vendor/createCategoriesPhones.php" method="post">
+
+
+            <div class="form-group">
+            <select onchange="showSingleDiv(this.value)">
+                <option disabled selected>Add product</option>
+                <option value="#some-phones">Phones</option>
+                <option value="#some-monitors">Monitors</option>
+            </select>
+            </div>
+
+            <div id="some-phones" class="single">
+                <form class="row g-3 needs-validation" action="./vendor/createCategoriesPhones.php" method="post">
                 <div class="col-md-6">
                     <label class="form-label">Name</label>
                     <input type="text" class="form-control" name="name">
@@ -150,7 +160,8 @@
                     <button class="btn btn-primary" type="submit">Add Phones</button>
                 </div>
             </form>
-
+        </div>
+            <div id="some-monitors" class="single">
             <form class="row g-3 needs-validation" action="./vendor/createCategoriesMonitors.php" method="post">
                 <div class="col-md-6">
                     <label class="form-label">Name</label>
@@ -172,6 +183,13 @@
                     <button class="btn btn-primary" type="submit">Add Monitors</button>
                 </div>
             </form>
+            </div>
+            <div class="single" data-some-attr="any">блок с data-атрибутом</div>
+
+                    
+            
+
+            
         </div>
     </div>
 
@@ -229,6 +247,7 @@
                 </div>
             </form>
             <?php
+
             if (isset($_POST['submit'])){
                 $search1 = $_POST["priceSearch"];
                 $search2 = $_POST["ramSearch"];
@@ -300,15 +319,15 @@
                 <form class="row g-3 needs-validation" action="./vendor/createCategoriesPhones.php" method="post">
                 <div class="col-md">
                     <label class="form-label">Price</label>
-                    <input type="text" class="form-control" name="price" placeholder='<?= $priceMonMin[0][0] ?> - <?= $priceMonMax[0][0] ?>'>
+                    <input type="text" class="form-control" name="priceSearch" placeholder='<?= $priceMonMin[0][0] ?> - <?= $priceMonMax[0][0] ?>'>
                 </div>
                 <div class="col-md">
                     <label class="form-label">Diagonal</label>
-                    <input type="text" class="form-control" name="diagonal" placeholder='<?= $diagonalMin[0][0] ?> - <?= $diagonalMax[0][0] ?>'>
+                    <input type="text" class="form-control" name="diagonalSearch" placeholder='<?= $diagonalMin[0][0] ?> - <?= $diagonalMax[0][0] ?>'>
                 </div>
                 <div class="col-md">
                     <label class="form-label">Frequency</label>
-                    <input type="text" class="form-control" name="frequency" placeholder='<?= $frequencyMin[0][0] ?> - <?= $frequencyMax[0][0] ?>'>
+                    <input type="text" class="form-control" name="frequencySearch" placeholder='<?= $frequencyMin[0][0] ?> - <?= $frequencyMax[0][0] ?>'>
                 </div>
                 <div class="col-md">
                     <button class="btn btn-primary" name="submit" type="submit">Apply</button>
@@ -326,6 +345,26 @@
             //     echo "<h3>Result</h3><h4>" . $row['categoryName'] . "</h4><p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>"; 
             //     while($row = mysqli_fetch_assoc($query)) echo "<p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>";
             // }
+
+            function addWhere($where, $add, $and = true) {
+                if ($where) {
+                    if ($and) $where .= " AND $add";
+                    else $where .= " OR $add";
+                }
+                else $where = $add;
+                return $where;
+                }
+
+                if (!empty($_POST["filter"])) {
+                $where = "";
+                if ($_POST["priceSearch"]) $where = addWhere($where, "`price` = '".htmlspecialchars($_POST["priceSearch"]))."'";
+                if ($_POST["diagonalSearch"]) $where = addWhere($where, "`ram` = '".htmlspecialchars($_POST["diagonalSearch"]))."'";
+                if ($_POST["frequencySearch"]) $where = addWhere($where, "`countsim` = '".htmlspecialchars($_POST["frequencySearch"]))."'";
+                if ($_POST["hddSearch"]) $where = addWhere($where, "`hdd` = '".htmlspecialchars($_POST["hddSearch"]))."'";
+                $sql = "SELECT * FROM `phones`";
+                if ($where) $sql .= " WHERE $where";
+                echo $sql;
+                }
 
             ?> 
             <table class="table">
@@ -354,50 +393,7 @@
              ?>
         </div>
     </div>
-<?php
-    class HTMLTables extends Tables{
-        public $cellpading = '2';
-        public $bgcolor;
-
-        function __construct($headers, $bg='FFFFFF'){
-            Tables::__construct($headers);
-            $this->bgcolor = $bg;
-        }
-
-        function __destruct(){
-            echo "dead";
-        }
-        function setPadding($padding){
-            $this->cellpadding = $padding;
-        }
-        function output(){
-            echo "<table cellpading='" . $this->cellpading . "'><tr>";
-            foreach($this->headers as $header) 
-                echo "<th bgcolor='" . $this->bgcolor . "'>" . $header;
-            foreach($this->data as $y)
-            {
-                echo "<tr>";
-                foreach($y as $x)
-                    echo "<td bgcolor='" . $this->bgcolor . "'>$x";
-            }
-            echo "</table>";
-        }
-    }
-
-    $test = new HTMLTables(array('a', 'b', 'c', 'e', 'x'), '#00FFFF');
-    $test->setPadding(7);
-    $test->addRow(array('a' => 1, 'b' => 4, 'c' => 6, 'e' => 7, 'x' => 9));
-    $test->addRow(array('a' => 1, 'b' => 2, 'c' => 5, 'e' => 8, 'x' => 11));
-    $test->addRow(array('a' => 1, 'b' => 4, 'c' => 6, 'e' => 7, 'x' => 9));
-    $test->addRow(array('a' => 1, 'b' => 4, 'c' => 6, 'x' => 9));
-    $test->output();
-    $test2 = clone $test;
-    unset($test);
-    $test2->output();
-?>
-
-     <h2>Как мог <img src="./img/smile.png" alt="">  За дизайн простите и ошибки если найдете</h2>
-
+    
      <script src="./js/script.js"></script>
      <script src="./js/bootstrap.bundle.min.js"></script>
 </body>

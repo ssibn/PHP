@@ -33,3 +33,8 @@ a:hover{
     font-size: 14px;
     width: 700px;
 }
+
+
+.single { margin: 0.5rem 0; padding: 1rem; text-align: center; }
+.single { display: none; }
+.single.active { display: block; }
