@@ -74,7 +74,6 @@
             }
             $obj = new PhoneCategory('iPhone','999','3','1','256','iOs');
             echo $obj -> __filters();
-
         ?>
     </div>
 
@@ -184,12 +183,6 @@
                 </div>
             </form>
             </div>
-            <div class="single" data-some-attr="any">блок с data-атрибутом</div>
-
-                    
-            
-
-            
         </div>
     </div>
 
@@ -254,8 +247,6 @@
                 </div>
                 <div class="col-md">
                     <button disabled id = "button" class="btn btn-primary" name="submit" type="submit">Apply</button>
-
-
                 </div>
             </form>
             <?php
@@ -419,7 +410,6 @@
         </div>
     </div>
    
-    
      <script src="./js/script.js"></>
      <script src="./js/bootstrap.bundle.min.js"></script>
 </body>
