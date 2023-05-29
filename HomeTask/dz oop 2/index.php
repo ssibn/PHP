@@ -210,6 +210,16 @@
             $productsMon = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `monitors` WHERE `categories` = '$categories'"));
 
             $name = mysqli_fetch_all( mysqli_query($connect, "SELECT DISTINCT `categories` FROM `category`"));
+
+            function addWhere($where, $add, $and = true) {
+                if ($where) {
+                    if ($and) $where .= " AND $add";
+                    else $where .= " OR $add";
+                }
+                else $where = $add;
+                return $where;
+            }
+
             foreach ($name as $nameValue)
             {
                 $result = array_unique($nameValue);
@@ -243,44 +253,54 @@
                     <input type="number" class="form-control" name="hddSearch" placeholder='<?= $hddMin[0][0] ?> - <?= $hddMax[0][0] ?>' value=''>
                 </div>
                 <div class="col-md">
-                    <button class="btn btn-primary" name="submit" type="submit">Apply</button>
+                    <button disabled id = "button" class="btn btn-primary" name="submit" type="submit">Apply</button>
+
+
                 </div>
             </form>
             <?php
 
+            function zaprosPhone() {
+                $where = "";
+                if ($_POST["priceSearch"]) $where = addWhere($where, "`price` = '".htmlspecialchars($_POST["priceSearch"]))."'";
+                if ($_POST["ramSearch"]) $where = addWhere($where, "`ram` = '".htmlspecialchars($_POST["ramSearch"]))."'";
+                if ($_POST["countsimSearch"]) $where = addWhere($where, "`countsim` = '".htmlspecialchars($_POST["countsimSearch"]))."'";
+                if ($_POST["hddSearch"]) $where = addWhere($where, "`hdd` = '".htmlspecialchars($_POST["hddSearch"]))."'";
+                $sql = 'SELECT * FROM `phones`';
+                if ($where) $sql .= " WHERE $where";
+                return $sql;
+            };
+            $func = 'zaprosPhone';
+
             if (isset($_POST['submit'])){
-                $search1 = $_POST["priceSearch"];
-                $search2 = $_POST["ramSearch"];
-                $search3 = $_POST["countsimSearch"];
-                $search4 = $_POST["hddSearch"];
-                $query = mysqli_query($connect, "SELECT * FROM `phones` WHERE `price`=$search1 or `ram`=$search2 or `countsim`=$search3 or `hdd`=$search4");
-                $row = mysqli_fetch_assoc($query); ?>
+                $row = mysqli_fetch_all(mysqli_query($connect, $func()));
+
+            ?>
                 <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">RAM</th>
-                        <th scope="col">Count sim</th>
-                        <th scope="col">HDD</th>
-                        <th scope="col">OS</th>
-                    </tr>
-                </thead>
-                
-                <tbody> <?php
-                while($row = mysqli_fetch_assoc($query)) { ?>
-                
-                    <tr>
-                        <th scope="row"><?= $row['name'] ?></th>
-                        <td><?= $row['price'] ?></td>
-                        <td><?= $row['ram'] ?></td>
-                        <td><?= $row['countsim'] ?></td>
-                        <td><?= $row['hdd'] ?></td>
-                        <td><?= $row['os'] ?></td>
-                    </tr>
-                
-            <?php
-                } ?>
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">RAM</th>
+                            <th scope="col">Count sim</th>
+                            <th scope="col">HDD</th>
+                            <th scope="col">OS</th>
+                        </tr>
+                    </thead>
+                <tbody> 
+                <?php
+                foreach ($row as $phone): ?>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><?= $phone[2] ?></th>
+                            <td><?= $phone[3] ?></td>
+                            <td><?= $phone[4] ?></td>
+                            <td><?= $phone[5] ?></td>
+                            <td><?= $phone[6] ?></td>
+                            <td><?= $phone[7] ?></td>
+                        </tr>
+                        <?php endforeach ?> 
+                    </tbody>
                 </tbody>
             </table> <?php
             } else {
@@ -314,9 +334,9 @@
             <?php
             }
 
-
-            } else if ($product[1] == "Monitor") { ?>
-                <form class="row g-3 needs-validation" action="./vendor/createCategoriesPhones.php" method="post">
+            } else if ($product[1] == "Monitor") 
+            { ?>
+                <form class="row g-3 needs-validation" method="post">
                 <div class="col-md">
                     <label class="form-label">Price</label>
                     <input type="text" class="form-control" name="priceSearch" placeholder='<?= $priceMonMin[0][0] ?> - <?= $priceMonMax[0][0] ?>'>
@@ -330,42 +350,46 @@
                     <input type="text" class="form-control" name="frequencySearch" placeholder='<?= $frequencyMin[0][0] ?> - <?= $frequencyMax[0][0] ?>'>
                 </div>
                 <div class="col-md">
-                    <button class="btn btn-primary" name="submit" type="submit">Apply</button>
+                    <button disabled id = "button" class="btn btn-primary" name="submit" type="submit">Apply</button>
                 </div>
             </form>
             <?php
-            // if (isset($_POST['submit'])){
-            //     $search = $_POST["search"];
-            //     $price = $_POST["price"];
-            //     $ram = $_POST["ram"];
-            //     $countsim = $_POST["countsim"];
-            //     $hdd = $_POST["hdd"];
-            //     $query = mysqli_query($connect, "SELECT * FROM `categor` WHERE `categoryName` LIKE '%$search%' ");
-            //     $row = mysqli_fetch_assoc($query);
-            //     echo "<h3>Result</h3><h4>" . $row['categoryName'] . "</h4><p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>"; 
-            //     while($row = mysqli_fetch_assoc($query)) echo "<p>" . $row['categoryName'] . " - " . $row['liname'] . " : " . $row['liprice'] . "</p>";
-            // }
-
-            function addWhere($where, $add, $and = true) {
-                if ($where) {
-                    if ($and) $where .= " AND $add";
-                    else $where .= " OR $add";
-                }
-                else $where = $add;
-                return $where;
-                }
-
-                if (!empty($_POST["filter"])) {
+            function zaprosMonitor() {
                 $where = "";
                 if ($_POST["priceSearch"]) $where = addWhere($where, "`price` = '".htmlspecialchars($_POST["priceSearch"]))."'";
-                if ($_POST["diagonalSearch"]) $where = addWhere($where, "`ram` = '".htmlspecialchars($_POST["diagonalSearch"]))."'";
-                if ($_POST["frequencySearch"]) $where = addWhere($where, "`countsim` = '".htmlspecialchars($_POST["frequencySearch"]))."'";
-                if ($_POST["hddSearch"]) $where = addWhere($where, "`hdd` = '".htmlspecialchars($_POST["hddSearch"]))."'";
-                $sql = "SELECT * FROM `phones`";
+                if ($_POST["diagonalSearch"]) $where = addWhere($where, "`diagonal` = '".htmlspecialchars($_POST["diagonalSearch"]))."'";
+                if ($_POST["frequencySearch"]) $where = addWhere($where, "`frequency` = '".htmlspecialchars($_POST["frequencySearch"]))."'";
+                $sql = 'SELECT * FROM `monitors`';
                 if ($where) $sql .= " WHERE $where";
-                echo $sql;
-                }
+                return $sql;
+            };
+            $func = 'zaprosMonitor';
 
+            if (isset($_POST['submit'])){
+                $row = mysqli_fetch_all(mysqli_query($connect, $func()));
+            ?>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Diagonal</th>
+                            <th scope="col">Frequency</th>
+                        </tr>
+                    </thead>
+                    <?php
+                    foreach ($row as $monitor): ?>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><?= $monitor[2] ?></th>
+                            <td><?= $monitor[3] ?></td>
+                            <td><?= $monitor[4] ?></td>
+                            <td><?= $monitor[5] ?></td>
+                        </tr>
+                    <?php endforeach ?> 
+                    </tbody>
+                </table> <?php
+            } else {
             ?> 
             <table class="table">
                 <thead>
@@ -385,16 +409,18 @@
                         <td><?= $monitor[4] ?></td>
                         <td><?= $monitor[5] ?></td>
                     </tr>
-                    <?php endforeach ?> 
+                <?php endforeach ?> 
                 </tbody>
             </table>
             <?php
             }
-             ?>
+        }
+        ?>
         </div>
     </div>
+   
     
-     <script src="./js/script.js"></script>
+     <script src="./js/script.js"></>
      <script src="./js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

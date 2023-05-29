@@ -34,7 +34,14 @@ a:hover{
     width: 700px;
 }
 
-
-.single { margin: 0.5rem 0; padding: 1rem; text-align: center; }
-.single { display: none; }
-.single.active { display: block; }
+.single { 
+    margin: 0.5rem 0; 
+    padding: 1rem; 
+    text-align: center;
+}
+.single { 
+    display: none;
+}
+.single.active { 
+    display: block;
+}
