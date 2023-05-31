@@ -55,7 +55,7 @@
         ?>
 
         <h3>Task 3</h3>
-        <a class="nav-link"  aria-disabled="false" href="./session.php"><?php echo $polzovatel -> __link()?> </a>
+        <a class="nav-link primary text-white"  aria-disabled="false" href="./session.php"><?php echo $polzovatel -> __link()?> </a>
     </div>
 
     <div class="task">
