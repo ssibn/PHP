@@ -11,9 +11,24 @@
     <title>Session</title>
 </head>
 <body>
+    <?php
+    require_once ('./config/tasks.php');
+    
+    ?>
     <div class="task">
-        <a class="nav-link align-center"  aria-disabled="false" href="./index.php">Back</a>
+        <a class="nav-link text-center"  aria-disabled="false" href="./index.php">Back</a>
     </div>
+    <?php 
+    // var_dump($sergey);
+    // foreach ($sergey as [$name, $email, $date, $sessionId]) {
+    //     // 
+    // };
+    $count = count($sergey);
+    for ($i = 0; $i < $count; $i++) {
+        echo $sergey[$i] -> historyBuy() . "<br>";
+    }
+    ?>
+
     
      <script src="./js/script.js"></script>
      <script src="./js/bootstrap.bundle.min.js"></script>

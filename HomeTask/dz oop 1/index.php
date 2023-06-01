@@ -5,11 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./img/smile.png">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     
     <title>OOP 1</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID"
+                aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarID">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="../dz oop 1">OOP 1</a>
+                    <a class="nav-link active" aria-current="page" href="../dz oop 2">OOP 2</a>
+                    <a class="nav-link active" aria-current="page" href="../dz oop 3">OOP 3</a>
+                </div>
+            </div>
+        </div>
+    </nav>
     <div class="task">
     <?php 
         echo "<h3>Сыграем в кости? просто обнови страницу, но вообще это легко))</h3> Кто победил решай Сам)) мне некогда счет вести<br>";
@@ -103,7 +120,7 @@
                     <button type="submit">Add</button>
                     <?php
             }
-            if ($productValue[1] != null)
+            if ($product != null)
             {
                 ?>
                 <ul>
