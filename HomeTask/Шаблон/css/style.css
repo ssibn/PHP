@@ -1,0 +1,35 @@
+body
+{
+    background-color: #b6cbe8;
+    background-image: url('../img/cloud.png');
+    background-attachment: fixed;
+    animation: cloud 10s ease infinite;
+}
+@keyframes cloud
+{
+    from
+    {
+        background-position-x: 0px;
+    }
+    to
+    {
+        background-position-x: 500px;
+    }
+}
+
+a:hover{
+    background: red;
+}
+
+.task{
+    margin: 50px auto;
+    text-align: left;
+    border-collapse: separate;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    border-spacing: 10px;
+    border-radius: 3px;
+    background: rgba(253, 253, 253, 0.6);
+    font-size: 14px;
+    width: 700px;
+}
