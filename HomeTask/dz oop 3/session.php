@@ -20,9 +20,7 @@
     </div>
     <?php 
     // var_dump($sergey);
-    // foreach ($sergey as [$name, $email, $date, $sessionId]) {
-    //     // 
-    // };
+
     $count = count($sergey);
     for ($i = 0; $i < $count; $i++) {
         echo $sergey[$i] -> historyBuy() . "<br>";
